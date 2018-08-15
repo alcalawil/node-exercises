@@ -1,12 +1,11 @@
 var fs = require('fs')
 var fileList = new Array 
-var filter = process.argv[3]
 
-module.exports = function findFiles(){
-                    fs.readdir(process.argv[2], 'utf8', function readOk(err, Files) {
+
+function findFiles(directory,filter,callback){
+                    fs.readdir(directory, 'utf8', function readOk(err, Files) {
 
                         if (err){
-                            console.log("ERROR")
                            return callback(err)
                         }
 
@@ -18,9 +17,8 @@ module.exports = function findFiles(){
                             fileList.push (Files[i])
                             }
                         }
-                        
-                        for (var i = 0; i < fileList.length; i++) {
-                            console.log(fileList[i])
-                            }
+                            callback(null, fileList)    
                     });
                 }
+
+module.exports = findFiles       
