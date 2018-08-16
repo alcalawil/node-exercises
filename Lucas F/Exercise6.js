@@ -12,3 +12,4 @@ function log(err, fileList) {
 }
 
 mymodule(directory, filter, log)
+
