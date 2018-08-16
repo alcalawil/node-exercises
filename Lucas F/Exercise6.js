@@ -1,11 +1,14 @@
 var mymodule = require('./mymodule')
-var directory = process.argv[2]
-var filter    = process.argv[3]
+const directory = process.argv[2]
+const filter = process.argv[3]
 
-function log(err, fileList){
-    for (var i = 0; i < fileList.length; i++) {
-    console.log(fileList[i])
+function log(err, fileList) {
+    if (err) {
+        console.log(err);        
     }
-  }
+    for (var i = 0; i < fileList.length; i++) {
+        console.log(fileList[i])
+    }
+}
 
 mymodule(directory, filter, log)
